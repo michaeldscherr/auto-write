@@ -1,0 +1,707 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background:url('../img/noise.jpg') repeat;
+	overflow-x:hidden;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*!
+ * Gridpak Beta CSS
+ *
+ * Generator - http://gridpak.com/
+ * Created by @erskinedesign
+ */
+ 
+ html {
+	font-family: 'Lato', sans-serif;
+ }
+nav {
+	padding:0;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	background:#fff;
+	z-index:99999;
+	color:#333;
+}
+nav h6 {
+	margin:0;
+}
+ section {
+	padding-top:0px;
+	margin-bottom:50px;
+	position:relative;
+	overflow:visible;
+ }
+ p {
+	font-size: 1.25rem;
+	line-height:1.7;
+	margin-bottom:20px;
+	font-family: 'Arimo', sans-serif;
+	color:#999;
+	transition:opacity 1s;
+ }
+ img {
+	width:100%;
+	height:auto;
+	margin-bottom:30px;
+	float:left;
+ }
+ em {
+	font-weight:900;
+	letter-spacing:0em;	
+		color:#aaa;
+ }
+ 
+ 
+ h4 {
+	font-size: 3.125rem;
+	line-height:1.25;
+	font-weight:100;
+	letter-spacing:-.02em;	
+	margin-bottom:10px;
+	display:block;
+	font-family: 'Archivo Narrow', sans-serif;
+	margin-bottom:.5em;
+		color:#333;
+
+
+ }
+
+ h6 {
+ 	font-size:.5em;
+	line-height:1.2em;
+	text-transform:capitalize;
+	font-weight:600;
+	letter-spacing:.06em;	
+	margin-bottom:10px;
+	display:block;
+	color:#666;
+ }
+ 
+/* Reusable column setup */
+.col {
+    border:0px solid rgba(0,0,0,0);
+    float:left;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -moz-background-clip:padding-box !important;
+    -webkit-background-clip:padding-box !important;
+    background-clip:padding-box !important;\
+	position:relative;
+}
+.row {
+	display:block;
+}
+
+.intro { 
+	background:#fff;
+}
+.page {
+	background:none;
+	padding:1% 2%;
+}
+
+.intro .page {
+	background:none;
+	color:#111;
+	padding-top:150px;
+	padding-bottom:30px;
+	margin:0 auto;
+}
+    /* 1. 1 Column Grid 0px - 679px 
+    ----------------------------------------------------------------------------- 
+    
+    Span 1:    100%
+    
+    ----------------------------------------------------------------------------- */
+
+    @media screen and (min-width: 0px) and (max-width: 679px) {
+        
+        .col {
+            margin-left:0%;
+        	padding:0 2%;
+        }
+        
+        
+        /*
+        Add your semantic classnames in alongside their corresponding spans here. e.g.
+        
+        .span_3,
+        .my_semantic_class_name {
+            ...
+        }
+        */
+        
+        .span_1 {
+            width:100%;
+        }
+    }
+
+    /* 2. 6 Column Grid 680px - 1039px 
+    ----------------------------------------------------------------------------- 
+    
+    Span 1:    16.6666666667%
+    Span 2:    33.3333333333%
+    Span 3:    50.0%
+    Span 4:    66.6666666667%
+    Span 5:    83.3333333333%
+    Span 6:    100%
+    
+    ----------------------------------------------------------------------------- */
+
+    @media screen and (min-width: 680px) and (max-width: 1399px) {
+        
+        
+		.page {
+			max-width:1300px;
+			margin:120px auto;
+		}
+		
+		.navcontainer {
+			width:1300px;
+		}
+		
+		.col {
+            margin-left:0%;
+        	padding:0 1%;
+        }
+        
+        .row {
+			padding-top:25px;
+			padding-bottom:25px;
+		}
+        
+        
+        .span_1 {
+            width:16.6666666667%;
+        }
+        .span_2 {
+            width:33.3333333333%;
+        }
+        .span_3 {
+            width:50.0%;
+        }
+        .span_4 {
+            margin-left:0;
+            width:100%;
+        }
+        .span_5 {
+            margin-left:0;
+            width:100%;
+        }
+        .span_6, .span_7, .span_8, .span_9, .span_10, .span_11, .span_12  {
+            margin-left:0;
+            width:100%;
+        }
+    }
+
+    /* 3. 12 Column Grid 1040px - Infinity 
+    ----------------------------------------------------------------------------- 
+    
+    Span 1:    8.33333333333%
+    Span 2:    16.6666666667%
+    Span 3:    25.0%
+    Span 4:    33.3333333333%
+    Span 5:    41.6666666667%
+    Span 6:    50.0%
+    Span 7:    58.3333333333%
+    Span 8:    66.6666666667%
+    Span 9:    75.0%
+    Span 10:    83.3333333333%
+    Span 11:    91.6666666667%
+    Span 12:    100%
+    
+    ----------------------------------------------------------------------------- */
+
+    @media screen and (min-width: 1400px) {
+        
+        .page {
+			width:90%;
+			margin:50px auto;
+		}
+		
+		.nav_container {
+			width:90%;
+			margin: 0 auto;
+		}
+		
+		.col {
+            margin-left:0%;
+        	padding:0 1%;
+		}
+        
+        .row {
+			padding-top:25px;
+			padding-bottom:25px;
+		}
+        
+        
+        .span_1 {
+            width:8.33333333333%;
+        }
+        .span_2 {
+            width:16.6666666667%;
+        }
+        .span_3 {
+            width:25.0%;
+        }
+        .span_4 {
+            width:33.3333333333%;
+        }
+        .span_5 {
+            width:41.6666666667%;
+        }
+        .span_6 {
+            width:50.0%;
+        }
+        .span_7 {
+            width:58.3333333333%;
+        }
+        .span_8 {
+            width:66.6666666667%;
+        }
+        .span_9 {
+            width:75.0%;
+        }
+        .span_10 {
+            width:83.3333333333%;
+        }
+        .span_11 {
+            width:91.6666666667%;
+        }
+        .span_12 {
+            margin-left:0;
+            width:100%;
+        }
+		
+		.offset_1 {
+            margin-left:8.33333333333%;
+        }
+        .offset_2 {
+            margin-left:16.6666666667%;
+        }
+        .offset_3 {
+            margin-left:25.0%;
+        }
+        .offset_4 {
+            margin-left:33.3333333333%;
+        }
+        .offset_5 {
+            margin-left:41.6666666667%;
+        }
+        .offset_6 {
+            margin-left:50.0%;
+        }
+        .offset_7 {
+            margin-left:58.3333333333%;
+        }
+        .offset_8 {
+            margin-left:66.6666666667%;
+        }
+        .offset_9 {
+            margin-left:75.0%;
+        }
+        .offset_10 {
+            margin-left:83.3333333333%;
+        }
+        .offset_11 {
+            margin-left:91.6666666667%;
+        }
+        .offset_12 {
+            margin-left:100%;
+        }
+    }
+
+	.row * {
+	position:relative;
+	}
+	
+	/*MISC*/
+	
+	.colorchip {
+		width:25px;
+		height:25px;
+		margin-left:10px;
+		float:right;
+	}
+	.label {
+		color:#666;
+		font-size:.75em;
+		margin-top:10px;
+		
+	}
+	.logo {
+	font-weight:600;
+	letter-spacing:0em;	
+	margin-bottom:0px;
+	margin-right:10px;
+	display:block;
+	padding: 1% 1.5% 1% 1%;
+	float:left;
+	box-sizing: border-box;
+		color:#de3f29;
+			 	font-size:1.4em;
+	position:relative;
+	line-height:18px;
+	font-weight:900;
+	background:#fff;
+	font-family: 'Archivo Narrow', sans-serif;
+	text-transform:uppercase;
+	border-right:1px solid #ccc;
+	box-sizing: border-box;
+
+ }
+ 
+ 	.navLink {
+	font-weight:600;
+	margin-bottom:0px;
+	display:block;
+	padding:25px 1%;
+	float:left;
+	box-sizing: border-box;
+		color:#333;
+	position:relative;
+	font-weight:900;
+	background:#fff;
+		line-height:20px;
+	text-transform:uppercase;
+	font-weight:900;
+	letter-spacing:.2em;	
+	font-size:.75em;
+	color:#999;
+
+ }
+ .activeNavLink {
+	font-weight:600;
+	margin-bottom:0px;
+	display:block;
+	padding:25px 1%;
+	float:left;
+	box-sizing: border-box;
+		color:#fff;
+	position:relative;
+	position:relative;
+	background:#de3f29;
+
+ }
+ 	.active_project {
+ 	font-size:1em;
+	position:relative;
+	line-height:20px;
+	text-transform:uppercase;
+	font-weight:900;
+	letter-spacing:.08em;	
+	margin-bottom:0px;
+	display:block;
+	padding:25px 1%;
+	float:right;
+	background: #fff url('../img/arrow-down.jpg') 90% 30px;
+	background-repeat:no-repeat;
+	border-left:1px solid #ddd;
+	box-sizing: border-box;
+	color:#999;
+ }
+  .active_project:hover {
+  	background:#de3f29;
+	color:#fff;
+  
+  }
+ .active_project:hover ul.project_menu {
+ display:block;
+ }
+ul.project_menu {
+width:100%;
+position:absolute;
+left:-1px;
+top:70px;
+display:none;
+}
+
+ul.project_menu li {
+width:100%;
+
+	border-top:1px solid #f1f1f1;
+	border-left:1px solid #f1f1f1;
+	border-right:1px solid #f1f1f1;
+	opacity:0;
+	  -webkit-transition:0.2s linear 0s;
+  -o-transition:0.2s linear 0s;
+  transition:0.2s linear 0s;
+}
+ul.project_menu li a:hover {
+background:#f5f5f5;
+}
+ul.project_menu li a{
+padding:25px 5%;
+width:100%;
+display:block;
+	position:relative;
+	line-height:20px;
+	text-transform:capitalize;
+	font-weight:400;
+	letter-spacing:.16em;	
+	margin-bottom:0px;
+	color:#ccc;
+	 box-sizing: border-box;
+	background:#fff;
+}
+div.active_project:hover ul.project_menu li:nth-child(1) {
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  opacity:1;
+  }
+div.active_project:hover ul.project_menu li:nth-child(2) {
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+  opacity:1;
+  }
+  div.active_project:hover ul.project_menu li:nth-child(3) {
+  -webkit-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  opacity:1;
+  }
+  div.active_project:hover ul.project_menu li:nth-child(4) {
+  -webkit-transition-delay: 0.6s;
+  -o-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+  opacity:1;
+  }
+  div.active_project:hover ul.project_menu li:nth-child(5) {
+  -webkit-transition-delay: 0.8s;
+  -o-transition-delay: 0.8s;
+  transition-delay: 0.8s;
+  opacity:1;
+  }
+ .projects {
+ float:right;
+  	font-size:.75em;
+	line-height:20px;
+	text-transform:capitalize;
+	font-weight:600;
+	letter-spacing:.16em;	
+	margin-bottom:0px;
+	display:block;
+	padding:25px 1%;
+	text-align:right;
+	color:#ddd;
+ }
+ ul.gallery {
+ width:300%;
+ margin-left:-95%;
+ background:#000;
+ }
+ ul.gallery li {
+ display:none;
+ padding:1%;
+ background:#f5f5f5;
+ border:1px solid #ddd;
+ box-sizing: border-box;
+ transition: 1s;
+  width:32.3%;
+float:left;
+ }
+ 
+ ul.gallery li:nth-child(1) {
+margin-left:0;
+ }
+ul.gallery li:nth-child(1),ul.gallery li:nth-child(2),ul.gallery li:nth-child(3) {
+display:block;
+ }
+ .arrow-right {
+ width:50px;
+ height:50px;
+ display:block;
+ border:1px solid #ddd;
+ background: #fff url('../img/arrow-right.jpg') center center;
+ background-repeat:no-repeat;
+ position:absolute;
+ top:47%;
+ right:-25px;
+ z-index:100;
+ 	-webkit-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.12);
+-moz-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.12);
+box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.12);
+ }
+ 
+ .move-right {
+ transition: 1s;
+ margin-left:-192% !important;
+ }
+ 
+ .carousel_container {
+
+ }
+ 
+.carousel_inner {  
+float:left; /* important for inline positioning */  
+width:3300px; /* important (this width = width of list item(including margin) * items shown */  
+left:-1110px;
+overflow: hidden;  /* important (hide the items outside the div) */  
+/* non-important styling bellow */  
+background: #7b7b7b;  
+}  
+  
+.carousel_ul {  
+position:relative;  
+left:-1100px; /* important (this should be negative number of list items width(including margin) */  
+list-style-type: none; /* removing the default styling for unordered list items */  
+margin: 0px;  
+padding: 0px;  
+width:9999px; /* important */  
+/* non-important styling bellow */  
+padding-bottom:10px;  
+}  
+  
+.carousel_ul li{  
+float: left; /* important for inline positioning of the list items */  
+width:1100px;  /* fixed width, important */  
+/* just styling bellow*/  
+padding:60px;
+border-top: 1px solid #ddd;  
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+box-sizing:border-box;
+height:auto;  
+}  
+  
+.carousel_ul li img {  
+.margin-bottom:-4px; /* IE is making a 4px gap bellow an image inside of an anchor (<a href...>) so this is to fix that*/  
+/* styling */  
+cursor:pointer;  
+cursor: hand;  
+border:0px;  
+}  
+.right_scroll {
+width:50px;
+height:50px;
+display:block;
+border:1px solid #ddd;
+background: #fff url('../img/arrow-right.jpg') center center;
+background-repeat:no-repeat;
+position:absolute;
+top:47%;
+right:-25px;
+z-index:100;
+-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12);
+-moz-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.12);
+box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.12);
+}
+.left_scroll {
+width:50px;
+height:50px;
+display:block;
+border:1px solid #ddd;
+background: #fff url('../img/arrow-left.jpg') center center;
+background-repeat:no-repeat;
+position:absolute;
+top:47%;
+left:-25px;
+z-index:100;
+-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12);
+-moz-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.12);
+box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.12);
+}
+
+.category {
+padding:5px 10px;
+border-radius:2px;
+float:left;
+margin-right:10px;
+margin-bottom:10px;
+background:#ddd;
+color:#222;
+}
+
+
+.homepageHeadlines li {
+display:none;
+}
+].homepageHeadlines li:first-child {
+display:block;
+}
+
+.line {
+color:#de3f29;
+}
+
+.writer {
+position:absolute;
+}
+
+.placeholder {
+opacity:0;
+}
+
+a {
+color:#de3f29;
+text-decoration:none;
+}
+
+em a {
+font-weight:900;
+}
+
+.introTransition {
+opacity:0;
+}
+
+.homepageLink:hover h4.writer {
+color:#de3f29;
+}
+.introLink {
+text-align:center;
+color:#222;
+background:url('../img/arrow.png'), url('../img/noise.jpg');
+background-repeat: no-repeat, repeat;
+background-position:center center, top left;
+width:100%;
+height:70px;
+position:absolute;
+bottom:0;
+line-height:70px;
+
+}
