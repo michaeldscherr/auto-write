@@ -44,12 +44,11 @@
 			<div class="page">
 				<section class="introCopy">
 					<div class="row">
-						<a class="headlineLink" href="skinny.html">
-							<div class="offset_2 span_8 col homepageLink" data-role="auto-write">
-								<h4 class="writer">Yeah, I've shucked skinny dippers.</h4>
-								<h4 class="placeholder">Yeah, I've shucked skinny dippers.</h4>
-							</div>
-						</a>
+					<a class="headlineLink" href="skinny.html"><div class="offset_2 span_8 col homepageLink">
+					<h4 class="writer">Yeah, I've shucked skinny dippers.</h4>
+					<h4 class="placeholder">Yeah, I've shucked skinny dippers.</h4>
+
+					</div></a>
 					</div>
 					<div class="row">
 					<div class="offset_2 span_6 col">
@@ -108,6 +107,101 @@ $(document).ready(function() {
 			scrollTop: $(".introLink").offset().top
 		}, 2000);
 	});
+});	
+
+	
+//Window Resizing Func
+//Window Resizing Func
+//Window Resizing Func
+
+$(document).ready(function() {
+
+
+	var lines = ["Admire the skinny dippers.", "Spin around a med cart demo.", "Imagine yourself at the circus.", "Elephants, lions, bears,"];
+	var links = ["skinny.html", "sagamore.html", "remedi.html", "pbs.html"];
+	line=1;
+
+	function eraseChars() {
+	var $erasable = $('.writer'),
+	eraseableTxt = $erasable.html(),
+	eraseableTxtLen = eraseableTxt.length,
+	timeOut,
+	eraseableChar = 0;
+
+	timeOutTwo = setTimeout(function() {
+		eraseableChar++;
+		var type = eraseableTxt.substring(0, eraseableChar);
+		$el.html($el.text().slice(0, (eraseableChar * (-1))));
+		eraseChars();
+		
+		if (eraseableChar == eraseableTxtLen) {
+			clearTimeout(timeOutTwo);
+			$('.placeholder').html(lines[line]);
+			$(".headlineLink").attr("href", links[line]);
+			txt = $('.placeholder').html(),
+			txtLen = $('.placeholder').html().length
+			if (line < lines.length-1){
+			line++;
+			}
+			else {line=0}
+			char = 0;
+			typeProceedingLines();
+			
+
+		}
+
+	}, 30);
+
+	}
+
+	function logit(){
+		$('.introTransition').removeClass('introTransition');
+		setTimeout(function() { eraseChars() }, 5000);	
+	}
+
+	var $el = $('.writer'),
+	txt = $el.html(),
+	txtLen = txt.length,
+	timeOut,
+	char = 0;
+
+	$el.html('|');
+
+	(function typeFirstLine() {   
+	var simulateTyping = Math.round(Math.random() * (200 - 30)) + 30;
+	timeOut = setTimeout(function() {
+		char++;
+		var type = txt.substring(0, char);
+		$el.html(type + '<span class="line">|</span>');
+		typeFirstLine();
+
+		if (char == txtLen) {
+			$el.html($el.text().slice(0, -1)); //remove the "|" 
+			clearTimeout(timeOut);
+			logit();
+			console.log('HOLY SHIT IT WORKED');
+		}
+
+	}, simulateTyping);
+	}());
+
+	function typeProceedingLines() {   
+	var simulateTyping = Math.round(Math.random() * (200 - 30)) + 30;
+	timeOut = setTimeout(function() {
+		char++;
+		var type = txt.substring(0, char);
+		$el.html(type + '<span class="line">|</span>');
+		typeProceedingLines();
+
+		if (char == txtLen) {
+			$el.html($el.text().slice(0, -1)); //remove the "|"
+			clearTimeout(timeOut);
+			logit();
+		}
+
+	}, simulateTyping);
+	}
+
 });
 
 		
