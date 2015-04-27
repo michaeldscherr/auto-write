@@ -23,7 +23,12 @@
 				
 				$.each($elem_children, function(){
 					$(this).attr('data-text', $(this).text());
-					$(this).html($config.cursor_markup);
+					if($config.cursor){
+						$(this).html($config.cursor_markup);
+					}
+					else{
+						$(this).html("&nbsp;");
+					}
 				});
 				
 				function getText(initial){
@@ -96,7 +101,12 @@
 						
 						$temp_string = ($obj._increment === "plus") ? $text_string.substring(0, ($counter+1)) : $text_string.substring(0, ($counter-1));
 						
-						$obj._elem_to_type.html($temp_string + $config.cursor_markup);
+						if($config.cursor){
+							$obj._elem_to_type.html($temp_string + $config.cursor_markup);	
+						}
+						else{
+							$obj._elem_to_type.html($temp_string + "&nbsp;");	
+						}
 						
 						$counter = ($obj._increment === "plus") ? ($counter+1) : ($counter-1);
 						
