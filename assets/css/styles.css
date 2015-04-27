@@ -103,8 +103,13 @@ nav h6 {
 	font-family: 'Archivo Narrow', sans-serif;
 	margin-bottom:.5em;
 		color:#333;
-
-
+		opacity:0;
+		text-index:-999999px;
+ }
+ 
+ h4.active{
+	 opacity:1;
+	 text-indent: 0;
  }
 
  h6 {
