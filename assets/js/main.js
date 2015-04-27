@@ -13,6 +13,7 @@
 					type_duration: 3000,
 					still_duration: 2000,
 					backspace_duration: 1000,
+					human_error_max_duration: 50,
 					cursor: true,
 					cursor_markup: '<span class="line">|</span>'
 				};
@@ -21,27 +22,25 @@
 					$config = $.extend($config, settings);
 				}
 				
-				$.each($elem_children, function(){
-					$(this).attr('data-text', $(this).text());
-					if($config.cursor){
-						$(this).html($config.cursor_markup);
-					}
-					else{
-						$(this).html("&nbsp;");
-					}
+				$.each($elem_children, function(index, value){
+					
+					var $elem = $(value),
+							$post_markup = ($config.cursor) ? $config.cursor_markup : "&nbsp;";
+					
+					$elem.attr('data-text', $elem.text()).
+								html($post_markup);
+					
 				});
 				
 				function getText(initial){
 					
 					initial = initial || "false";
 					
-					var $active = ($elem.find('.active').length) ? $elem.find('.active').first() : $elem_children.first();
-					var $next = ($active.next().length) ? $active.next() : $elem_children.first();
+					var $active = ($elem.find('.active').length) ? $elem.find('.active').first() : $elem_children.first(),
+							$next = ($active.next().length) ? $active.next() : $elem_children.first(),
+							$elem_to_type = (initial === "true") ? $active : $next;
 					
-					var $elem_to_type = (initial === "true") ? $active : $next;
-					
-					$elem_children.removeClass('active');
-					$elem_to_type.addClass('active');
+					$elem_to_type.addClass('active').siblings().removeClass('active');
 					
 					typeText($elem_to_type);
 					
@@ -86,11 +85,11 @@
 				function textLoop($obj, callback){
 					
 					var $text_string = $obj._elem_to_type.data('text').trim(),
-							$text_string_length = $text_string.length,
-							$duration = Math.floor(($obj._duration_type / $text_string_length)),
-							$temp_string = "",
+							$text_string_length = $text_string.length;
+					var $duration = Math.floor(($obj._duration_type / $text_string_length)),
 							$counter = ($obj._increment === "plus") ? 0 : $text_string_length,
-							$end_counter = ($obj._increment === "plus") ? $text_string_length : 0,
+							$end_counter = ($obj._increment === "plus") ? $text_string_length : 0;
+					var $temp_string = "",
 							$interval;
 					
 					if($obj._increment_type === "plus"){
@@ -99,22 +98,23 @@
 					
 					$interval = setInterval(function(){
 						
-						$temp_string = ($obj._increment === "plus") ? $text_string.substring(0, ($counter+1)) : $text_string.substring(0, ($counter-1));
+						var $dynamic_counter = ($obj._increment === "plus") ? ($counter+1) : ($counter-1),
+								$human_delay = Math.round(Math.random() * $config.human_error_max_duration) + 1;
 						
-						if($config.cursor){
-							$obj._elem_to_type.html($temp_string + $config.cursor_markup);	
-						}
-						else{
-							$obj._elem_to_type.html($temp_string + "&nbsp;");	
-						}
+						$temp_string = $text_string.substring(0, $dynamic_counter);
+						$post_markup = ($config.cursor) ? $config.cursor_markup : "&nbsp;";
+						$counter = $dynamic_counter;
 						
-						$counter = ($obj._increment === "plus") ? ($counter+1) : ($counter-1);
+						$obj._elem_to_type.delay($human_delay).queue(function(next){
+							$(this).html($temp_string + $post_markup);
+							next();
+						})	
 						
 						if($counter === $end_counter){
 							setTimeout(function(){
 								clearInterval($interval);
 								callback($obj._elem_to_type);
-							},$duration);
+							}, ($duration + $config.human_error_max_duration));
 						}
 						
 					}, $duration);
