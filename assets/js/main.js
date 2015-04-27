@@ -14,79 +14,104 @@
 					still_duration: 2000,
 					backspace_duration: 1000,
 					cursor: true,
-					cursor_markup: '<span class="line"></span>'
+					cursor_markup: '<span class="line">|</span>'
 				};
 				
 				if(settings){
 					$config = $.extend($config, settings);
 				}
 				
+				$.each($elem_children, function(){
+					$(this).attr('data-text', $(this).text());
+					$(this).html($config.cursor_markup);
+				});
+				
 				function getText(initial){
 					
-					initial = initial || 0;
+					initial = initial || "false";
 					
-					var $active = $elem_children.find('.active').length ? $elem_children.find('.active').first() : $elem_children.first(),
-							$next = $active.next().length ? $active.next() : $elem_children.first();
+					var $active = ($elem.find('.active').length) ? $elem.find('.active').first() : $elem_children.first();
+					var $next = ($active.next().length) ? $active.next() : $elem_children.first();
 					
-					var $to_type = (initial === 1) ? $active : $next;
+					var $elem_to_type = (initial === "true") ? $active : $next;
 					
 					$elem_children.removeClass('active');
-					$to_type.addClass('active');
+					$elem_to_type.addClass('active');
 					
-					typeText($to_type);
+					typeText($elem_to_type);
 					
 				}
 				
-				function typeText($to_type){
+				function typeText($elem_to_type){
 					
-					var $type_text = $to_type.text().trim(),
-							$type_array = new Array();
-					
-					for(var i=0; i<$type_text.length; i++){
-						$type_array[i] = $type_text.charAt(i);
+					var $callback = function(data){
+						setTimeout(function(){
+							backspaceText(data);
+						},$config.still_duration);
 					};
 					
-					$to_type.text("");
+					var $obj = {
+						_elem_to_type: $elem_to_type,
+						_duration_type: $config.type_duration,
+						_increment: "plus"
+					};
 					
-					var $interval_speed = ($config.type_duration / $type_array.length),
-							$text = "",
-							$interval,
-							$counter = 0;
-					
-					$interval = setInterval(function(){
-						$text += $type_array[$counter];
-						$to_type.text($text);
-						$counter++;
-						if($counter === $type_array.length){
-							clearInterval($interval);
-							setTimeout(function(){
-								backspaceText($to_type, $type_text, $type_array);
-							}, $config.still_duration);
-						}
-					}, $interval_speed);
+					textLoop($obj, $callback);
 					
 				}
 				
-				function backspaceText($to_type, $type_text, $type_array){
+				function backspaceText($elem_to_type){
 					
-					var $interval_speed = ($config.backspace_duration / $type_array.length),
-							$text,
-							$interval,
-							$counter = $type_array.length;
-							
-					$interval = setInterval(function(){
-						$text = $type_text.substring(0, $counter - 1);
-						$to_type.text($text);
-						$counter--;
-						if($counter === 0){
-							clearInterval($interval);
+					var $callback = function(data){
+						setTimeout(function(){
 							getText();
-						}
-					}, $interval_speed);
+						}, $config.still_duration);
+					};
+					
+					var $obj = {
+						_elem_to_type: $elem_to_type,
+						_duration_type: $config.backspace_duration,
+						_increment: "minus"
+					};
+					
+					textLoop($obj, $callback);
 					
 				}
 				
-				getText(1);
+				function textLoop($obj, callback){
+					
+					var $text_string = $obj._elem_to_type.data('text').trim(),
+							$text_string_length = $text_string.length,
+							$duration = Math.floor(($obj._duration_type / $text_string_length)),
+							$temp_string = "",
+							$counter = ($obj._increment === "plus") ? 0 : $text_string_length,
+							$end_counter = ($obj._increment === "plus") ? $text_string_length : 0,
+							$interval;
+					
+					if($obj._increment_type === "plus"){
+						$obj._elem_to_type.text("");
+					}
+					
+					$interval = setInterval(function(){
+						
+						$temp_string = ($obj._increment === "plus") ? $text_string.substring(0, ($counter+1)) : $text_string.substring(0, ($counter-1));
+						
+						$obj._elem_to_type.html($temp_string + $config.cursor_markup);
+						
+						$counter = ($obj._increment === "plus") ? ($counter+1) : ($counter-1);
+						
+						if($counter === $end_counter){
+							setTimeout(function(){
+								clearInterval($interval);
+								callback($obj._elem_to_type);
+							},$duration);
+						}
+						
+					}, $duration);
+					
+				}
+				
+				getText("true");
 				
 			});
 			
@@ -96,7 +121,7 @@
 	
 	$.fn.AutoWrite = function(settings){
 		return methods.initialize.apply(this, arguments);
-	}
+	};
 	
 	$(function(){
 		
@@ -104,4 +129,4 @@
 		
 	});
 	
-})(jQuery, window, document)
+})(jQuery, window, document);
