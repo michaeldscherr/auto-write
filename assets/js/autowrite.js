@@ -92,7 +92,7 @@ Copyright (c) 2015 Michael Scherr
 				
 				function textLoop($obj, callback){
 					
-					var $text_string = $obj._elem_to_type.data('text').trim(),
+					var $text_string = $.trim($obj._elem_to_type.data('text')),
 							$counter = ($obj._increment === "forward") ? 0 : $text_string.length,
 							$end_counter = ($counter === 0) ? ($text_string.length + 1) : -1;
 					

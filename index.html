@@ -37,7 +37,7 @@
 			    <h2>Downloads</h2>
 			    <div class="bs-callout">
 				    <p><a class="btn btn-default" href="assets/js/autowrite.js" role="button">Development Version</a> <a class="btn btn-default" href="assets/js/autowrite.min.js" role="button">Production Version</a></p>
-				    <p>Also available on GitHub: <a target="_blank" href="#">AutoWrite GIT Repository</a>.</p>
+				    <p>Also available on <strong>GitHub</strong>: <a target="_blank" href="#">AutoWrite GIT Repository</a>.</p>
 			    </div><!--end bs-callout-->
 					<h2>Documentation</h2>
 					<h3>Dependencies</h3>
@@ -60,6 +60,7 @@
 						<p>The <code>span.line</code> and <code>blink keyframe</code> are only necessary if you would like the cursor to be shown during typing.</p>
 					</div><!--end bs-callout-->
 					<pre><code class="language-css" data-lang="css">.auto-write h1{
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	-webkit-opacity: 0;
 	-moz-opacity: 0;
 	opacity:0;
@@ -67,6 +68,7 @@
 	position: absolute;
 }
 .auto-write h1.active{
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	-webkit-opacity: 1;
 	-moz-opacity: 1;
 	opacity:1;
@@ -112,9 +114,14 @@
 					<p><code>cursor</code>: boolean to show cursor at end of rendered string while typing.</p>
 					<p><code>cursor_markup</code>: markup for cursor if <code>cursor</code> is set to <code>true</code>. Will be set to <code>&quot;&nbsp;&quot;</code> if cursor is <code>false</code>.</p>
 				</div><!--end bs-callout-->
+				<h3>Support</h3>
+				<div class="bs-callout">
+					<p>Works in <code>IE8+</code> and all <code>modern browsers</code>.</p>
+					<p><code>Blink keyframe</code> works in <code>IE10+</code> (will still see cursor) and all <code>modern browsers</code>.</p>
+				</div><!--end bs-callout-->
 				<h3>Copyright</h3>
 				<div class="bs-callout">
-					<p>AutoWrite.js is licensed under the <a target="_blank" href="http://opensource.org/licenses/MIT">MIT License</a>. AutoWrite.js is free to use in personal or commercial projects.</p>
+					<p><code>AutoWrite.js</code> is licensed under the <a target="_blank" href="http://opensource.org/licenses/MIT">MIT License</a>. <code>AutoWrite.js</code> is free to use in personal or commercial projects.</p>
 				</div><!--end bs-callout-->
 				</div><!--end row-->
 	    </div><!--end container-->
