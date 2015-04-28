@@ -19,22 +19,115 @@
     <![endif]-->
   </head>
   <body>
-    
     <div class="jumbotron">
 	    <div class="container">
 		    <div class="row">
-			    <div data-role="auto-write">
-				    <h1>Testing auto-write functionality.</h1>
-				    <h1>Another Test.</h1>
-				    <h1>One more final test using the auto-write functionality.</h1>
+			    <div class="auto-write" data-role="auto-write">
+				    <h1>Welcome to AutoWrite.js</h1>
+				    <h1>Here you can find documentation.</h1>
+				    <h1>Have fun and stay frosty.</h1>
 			    </div><!--end auto-write-->
 		    </div><!--end row-->
 	    </div><!--end container-->
     </div><!--end jumbotron-->
+	  <div class="main-container">
+	    <div class="container">
+		    <div class="row">
+			    <h1>AutoWrite.js <small>by Michael Scherr</small></h1>
+			    <h2>Downloads</h2>
+			    <div class="bs-callout">
+				    <p><a class="btn btn-default" href="assets/js/autowrite.js" role="button">Development Version</a> <a class="btn btn-default" href="assets/js/autowrite.min.js" role="button">Production Version</a></p>
+				    <p>Also available on GitHub: <a target="_blank" href="#">AutoWrite GIT Repository</a>.</p>
+			    </div><!--end bs-callout-->
+					<h2>Documentation</h2>
+					<h3>Dependencies</h3>
+					<div class="bs-callout">
+						<h4>HTML Markup</h4>
+						<p>Requires <code>jQuery 1.9.1</code> or later. Add the <code>autowrite.min.js</code> or <code>autowrite.js</code> after your <code>jQuery</code> call directly before the closing <code>body</code> tag.</p>
+					</div><!--end bs-callout-->
+					<pre><code class="language-html" data-lang="html">&lt;script src=&quot;assets/js/libraries/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/autowrite.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+					<p>Add the data attribute <code>data-role="auto-write"</code> to the direct parent of the children you want to auto write.</p>
+					<pre><code class="language-html" data-lang="html">&lt;div data-role=&quot;auto-write&quot;&gt;
+	&lt;h1&gt;Welcome to AutoWrite.js&lt;/h1&gt;
+	&lt;h1&gt;Here you can find documenation.&lt;/h1&gt;
+	&lt;h1&gt;Have fun and stay frosty.&lt;/h1&gt;
+&lt;/div&gt;&lt;!--end auto-write--&gt;</code></pre>
+					<div class="bs-callout">
+						<h4>CSS Markup</h4>
+						<p>Add the following markup to your CSS file. Replace the <code>.auto-write</code> class with your own.</p>
+						<p>The <code>span.line</code> and <code>blink keyframe</code> are only necessary if you would like the cursor to be shown during typing.</p>
+					</div><!--end bs-callout-->
+					<pre><code class="language-css" data-lang="css">.auto-write h1{
+	-webkit-opacity: 0;
+	-moz-opacity: 0;
+	opacity:0;
+	text-index:-999999px;
+	position: absolute;
+}
+.auto-write h1.active{
+	-webkit-opacity: 1;
+	-moz-opacity: 1;
+	opacity:1;
+	text-indent: 0;
+	position: relative;
+}
+.auto-write span.line{
+	color:#de3f29;
+	-webkit-animation: blink 1s infinite 0.5s;
+	-moz-animation: blink 1s infinite 0.5s;
+	animation: blink 1s infinite 0.5s;
+}
+@keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}</code></pre>
+					<h3>Default JavaScript Params</h3>
+					<pre><code class="language-js" data-lang="js">var $config = {
+	type_duration: 2000,
+	still_duration: 2000,
+	backspace_duration: 1000,
+	human_error_max_duration: 100,
+	cursor: true,
+	cursor_markup: &#39;&lt;span class=&quot;line&quot;&gt;|&lt;/span&gt;&#39;
+};</code></pre>
+				<div class="bs-callout">
+					<h4>Param Descriptions</h4>
+					<p><code>type_duration</code>: how long it takes to type the current text. this will slightly vary depending on the <code>human_error_max_duration</code>, since that time is added to the overall duration of the currently typed text.</p>
+					<p><code>still_duration</code>: the timeout between when the text finishes typing and when the backspacing begins. Also the time between backspace completion, and the new text being typed.</p>
+					<p><code>backspace_duration</code>: how long it takes to backspace the current text.</p>
+					<p><code>human_error_max_duration</code>: max duration (in milliseconds) for the &quot;human typing&quot; effect. Randomly selects a duration between 0 and <code>human_error_max_duration</code>, which is then added to the timeout of the current character being rendered in the typed text.</p>
+					<p><code>cursor</code>: boolean to show cursor at end of rendered string while typing.</p>
+					<p><code>cursor_markup</code>: markup for cursor if <code>cursor</code> is set to <code>true</code>. Will be set to <code>&quot;&nbsp;&quot;</code> if cursor is <code>false</code>.</p>
+				</div><!--end bs-callout-->
+				<h3>Copyright</h3>
+				<div class="bs-callout">
+					<p>AutoWrite.js is licensed under the <a target="_blank" href="http://opensource.org/licenses/MIT">MIT License</a>. AutoWrite.js is free to use in personal or commercial projects.</p>
+				</div><!--end bs-callout-->
+				</div><!--end row-->
+	    </div><!--end container-->
+    </div><!--end main-container-->
+    <footer class="footer">
+	    <div class="container">
+		    <div class="row">
+				  <p>&copy; Scherr Bear 2015 - <em>Scherring is Caring</em>.</p>
+		    </div><!--end row-->
+	    </div><!--end container-->
+		</footer>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/libraries/jquery.min.js"></script>
+    <script src="assets/js/autowrite.js"></script>
   </body>
 </html>

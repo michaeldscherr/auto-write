@@ -1,3 +1,10 @@
+/*
+AutoWrite.js - http://dev.michaeldscherr.com/autowrite
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+Copyright (c) 2015 Michael Scherr
+*/
+
 (function($, win, doc, undefined){
 	
 	var methods = {
@@ -10,7 +17,7 @@
 						$elem_children = $elem.children();
 				
 				var $config = {
-					type_duration: 3000,
+					type_duration: 2000,
 					still_duration: 2000,
 					backspace_duration: 1000,
 					human_error_max_duration: 100,
@@ -22,7 +29,7 @@
 					$config = $.extend($config, settings);
 				}
 				
-				$post_markup = ($config.cursor) ? $config.cursor_markup : "&nbsp;";
+				var $post_markup = ($config.cursor) ? $config.cursor_markup : "&nbsp;";
 				
 				$.each($elem_children, function(index, value){
 					
@@ -58,7 +65,7 @@
 					var $obj = {
 						_elem_to_type: $elem_to_type,
 						_duration_type: $config.type_duration,
-						_increment: "plus"
+						_increment: "forward"
 					};
 					
 					textLoop($obj, $callback);
@@ -86,45 +93,42 @@
 				function textLoop($obj, callback){
 					
 					var $text_string = $obj._elem_to_type.data('text').trim(),
-							$text_string_length = $text_string.length;
-					var $duration = Math.floor(($obj._duration_type / $text_string_length)),
-							$counter = ($obj._increment === "plus") ? 0 : $text_string_length,
-							$end_counter = ($counter === 0) ? $text_string_length : 0;
+							$counter = ($obj._increment === "forward") ? 0 : $text_string.length,
+							$end_counter = ($counter === 0) ? ($text_string.length + 1) : -1;
 					
-					if($obj._increment_type === "plus"){
-						$obj._elem_to_type.text("");
-					}
+					var $options = $.extend($obj,{
+						_text_string: $text_string,
+						_counter: $counter
+					});
 					
-					var options = {
-						_elem: $obj._elem_to_type
-					};
-					
-					var stringRendered = function(){
-						$counter = ($obj._increment === "plus") ? ($counter+1) : ($counter-1);
-						if($counter === $end_counter){
+					var stringRendered = function($duration){
+						$options._counter = ($options._increment === "forward") ? ($options._counter+1) : ($options._counter-1);
+						if($options._counter === $end_counter){
 							setTimeout(function(){
-								callback($obj._elem_to_type);
+								callback($options._elem_to_type);
 							}, $duration);
 						}
 						else{
-							renderString($obj._elem_to_type, $text_string, $counter, stringRendered);		
+							renderString($options, stringRendered);		
 						}
-					}
+					};
 					
-					renderString($obj._elem_to_type, $text_string, $counter, stringRendered);
+					renderString($options, stringRendered);
 					
 				}
 				
-				function renderString($elem, $text_string, $counter, stringRendered){
+				function renderString($options, stringRendered){
 					
-					var $human_delay = Math.round(Math.random() * $config.human_error_max_duration) + 1,
-							$temp_string = $text_string.substring(0, $counter);
+					var $duration = Math.floor(($options._duration_type / $options._text_string.length)),
+							$human_delay = Math.round(Math.random() * $config.human_error_max_duration) + 1,
+							$full_delay = ($options._increment === "forward") ? ($human_delay + $duration) : $duration,
+							$temp_string = $options._text_string.substring(0, $options._counter);
 					
-					$elem.html($temp_string + $post_markup);
+					$options._elem_to_type.html($temp_string + $post_markup);
 					
 					setTimeout(function(){
-						stringRendered();
-					}, $human_delay);
+						stringRendered($duration);
+					}, $full_delay);
 					
 				}
 				
